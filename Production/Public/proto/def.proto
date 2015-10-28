@@ -46,6 +46,11 @@ enum FTYPE{
   ADDRESS = 3		//通讯录备份文件
   }
 
+enum SYNCTYPE{
+  UPDATE = 1,           //改
+  DELETE = 2,		//删
+  ADD	 = 3		//增
+  }
 
 struct RetHead{ 
  1: Errcode ret;
@@ -113,7 +118,9 @@ service CloudHardDiskService {
     uploaddResult uploadFile(1:i64 userid,2:string url);
 
     //queryResult queryFileList(1:i64 userid);
-    queryResult queryFileList(1:Token token ,2:FTYPE type);	  
+    queryResult queryFileList(1:Token token ,2:FTYPE type);
+    
+    RetHead     sysncnotepad(1:SYNCTYPE , 2:List notes);//完善中
 
     //downloadResult downloadFile(1:i64 userid, 2:string filename ); 
 
